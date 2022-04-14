@@ -3,6 +3,9 @@ package com.qj.study.tank;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * 使用单例
+ */
 public class PropertyMgr {
     static Properties props = new Properties();
 

@@ -1,6 +1,7 @@
 package com.qj.study.tank;
 
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 /**
@@ -19,10 +20,12 @@ public class Tank {
 
     int x = 200, y = 200;
 
-    private TankFrame tf;
+    TankFrame tf;
     private boolean living = true;
     private boolean moving = true;
-    private Group group = Group.BAD;
+    Group group = Group.BAD;
+
+    FireStragety fs;
 
     public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
@@ -34,6 +37,15 @@ public class Tank {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+        if(group == Group.GOOD) {
+            String goodFsName = PropertyMgr.getString("goodFs");
+            try {
+                fs = (FireStragety) Class.forName(goodFsName).getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else fs = new DefaultFireStragety();
     }
 
     public int getX() {
@@ -150,9 +162,7 @@ public class Tank {
     }
 
     public void fire() {
-        int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
-        int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
-        tf.bullets.add(new Bullet(bX, bY, this.dir, this.group, this.tf));
+        fs.fire(this);
     }
 
     public void die() {
