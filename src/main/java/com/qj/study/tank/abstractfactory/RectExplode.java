@@ -1,13 +1,13 @@
-package com.qj.study.tank;
+package com.qj.study.tank.abstractfactory;
 
-import com.qj.study.tank.abstractfactory.BaseExplode;
+import com.qj.study.tank.Audio;
+import com.qj.study.tank.Dir;
+import com.qj.study.tank.ResourceMgr;
+import com.qj.study.tank.TankFrame;
 
 import java.awt.*;
 
-/**
- * 子弹类
- */
-public class Explode extends BaseExplode {
+public class RectExplode extends BaseExplode {
     public static int WIDTH = ResourceMgr.explodes[0].getWidth();
     public static int HEIGHT = ResourceMgr.explodes[0].getHeight();
 
@@ -19,7 +19,7 @@ public class Explode extends BaseExplode {
 
     private int step = 0;
 
-    public Explode(int x, int y, TankFrame tf) {
+    public RectExplode(int x, int y, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.tf = tf;
@@ -28,8 +28,12 @@ public class Explode extends BaseExplode {
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(ResourceMgr.explodes[step++], x, y, null);
-        if(step >= ResourceMgr.explodes.length) tf.explodes.remove(this);
+        Color c  = g.getColor();
+        g.setColor(Color.RED);
+        g.fillRect(x, y, 10 * step, 10*step);
+        step++;
+        if(step >= 5) tf.explodes.remove(this);
+        g.setColor(c);
     }
 
     private void die() {

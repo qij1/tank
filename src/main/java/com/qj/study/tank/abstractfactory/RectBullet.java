@@ -1,14 +1,13 @@
-package com.qj.study.tank;
+package com.qj.study.tank.abstractfactory;
 
-import com.qj.study.tank.abstractfactory.BaseBullet;
-import com.qj.study.tank.abstractfactory.BaseTank;
+import com.qj.study.tank.*;
 
 import java.awt.*;
 
 /**
  * 子弹类
  */
-public class Bullet extends BaseBullet {
+public class RectBullet extends BaseBullet {
     private static final int SPEED = PropertyMgr.getInt("bulletSpeed");
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
@@ -29,7 +28,7 @@ public class Bullet extends BaseBullet {
         this.group = group;
     }
 
-    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
+    public RectBullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
@@ -46,22 +45,9 @@ public class Bullet extends BaseBullet {
         if(!living) {
             tf.bullets.remove(this);
         }
-        switch (dir) {
-            case LEFT:
-                g.drawImage(ResourceMgr.bulletL, x, y, null);
-                break;
-            case UP:
-                g.drawImage(ResourceMgr.bulletU, x, y, null);
-                break;
-            case RIGHT:
-                g.drawImage(ResourceMgr.bulletR, x, y, null);
-                break;
-            case DOWN:
-                g.drawImage(ResourceMgr.bulletD, x, y, null);
-                break;
-            default:
-                break;
-        }
+        Color c = g.getColor();
+        g.setColor(Color.YELLOW);
+        g.fillRect(x, y, 20, 20);
         move();
     }
 

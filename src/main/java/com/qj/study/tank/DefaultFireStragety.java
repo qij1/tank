@@ -1,5 +1,7 @@
 package com.qj.study.tank;
 
+import com.qj.study.tank.abstractfactory.BaseTank;
+
 public class DefaultFireStragety implements FireStragety{
     @Override
     public void fire(Tank t) {

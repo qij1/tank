@@ -1,5 +1,7 @@
 package com.qj.study.tank;
 
+import com.qj.study.tank.abstractfactory.*;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -11,11 +13,13 @@ import java.util.List;
 public class TankFrame extends Frame {
 
     Tank mytank = new Tank(200, 400, Dir.DOWN, Group.GOOD, this);
-    List<Bullet> bullets = new ArrayList<>();
-    List<Tank> tanks = new ArrayList<>();
-    List<Explode> explodes = new ArrayList<>();
+    public List<BaseBullet> bullets = new ArrayList<>();
+    public List<BaseTank> tanks = new ArrayList<>();
+    public List<BaseExplode> explodes = new ArrayList<>();
 
-    static final int GAME_WIDTH = PropertyMgr.getInt("gameWidth"), GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
+    public GameFactory gf = new RectFactory();
+
+    public static final int GAME_WIDTH = PropertyMgr.getInt("gameWidth"), GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
 
     public TankFrame(){
         setSize(GAME_WIDTH, GAME_HEIGHT);
