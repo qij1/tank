@@ -19,17 +19,18 @@ public class Tank {
 
     int x = 200, y = 200;
 
-    private TankFrame tf;
     private boolean living = true;
     private boolean moving = true;
     private Group group = Group.BAD;
 
-    public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
+    GameModel gm;
+
+    public Tank(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.tf = tf;
+        this.gm = gm;
         rect.x = this.x;
         rect.y = this.y;
         rect.width = WIDTH;
@@ -84,7 +85,7 @@ public class Tank {
 
     public void paint(Graphics g) {
         if(!living) {
-            tf.tanks.remove(this);
+            gm.tanks.remove(this);
             return;
         }
         switch (dir) {
@@ -152,7 +153,7 @@ public class Tank {
     public void fire() {
         int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
         int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
-        tf.bullets.add(new Bullet(bX, bY, this.dir, this.group, this.tf));
+        gm.bullets.add(new Bullet(bX, bY, this.dir, this.group, this.gm));
     }
 
     public void die() {
