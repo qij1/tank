@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9127b2db-0582-4c4a-9ded-0754c5b41686" name="Changes" comment="a" />
+    <list default="true" id="9127b2db-0582-4c4a-9ded-0754c5b41686" name="Changes" comment="抽象出GameModel,将Model和View分离，同时，GameModel作为Facade,负责与Frame打交道，同时负责内部事务">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Wall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/BulletTankCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/BulletWallCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/Collider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/ColliderChain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/TankTankCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/TankWallCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/decorator/GODecorator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/decorator/RectDecorator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/decorator/TailDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Explode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Explode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/TankFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/TankFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +34,7 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -22,10 +42,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="gameMode" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="KEEP" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -68,6 +89,9 @@
       <recent name="D:\codes\tank\src\test\java" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.qj.study.tank.decorator" />
+      <recent name="com.qj.study.tank.cor" />
+      <recent name="com.qj.study.tank.abstractfactory" />
       <recent name="com.qj.study.tank" />
     </key>
   </component>
@@ -145,7 +169,17 @@
       <workItem from="1649331881866" duration="1831000" />
       <workItem from="1649426250155" duration="4875000" />
       <workItem from="1649683447754" duration="5246000" />
-      <workItem from="1649766400873" duration="5046000" />
+      <workItem from="1649766400873" duration="7489000" />
+      <workItem from="1649851278608" duration="5642000" />
+      <workItem from="1649947852903" duration="2510000" />
+      <workItem from="1650012645194" duration="2375000" />
+      <workItem from="1650025654089" duration="8107000" />
+      <workItem from="1650181015922" duration="11095000" />
+      <workItem from="1650249587405" duration="8049000" />
+      <workItem from="1650280671655" duration="5459000" />
+      <workItem from="1650333529819" duration="263000" />
+      <workItem from="1650334035429" duration="12601000" />
+      <workItem from="1650370227309" duration="6578000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1649770218797</created>
@@ -154,7 +188,35 @@
       <option name="project" value="LOCAL" />
       <updated>1649770218797</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <created>1649771554458</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649771554458</updated>
+    </task>
+    <task id="LOCAL-00003" summary="策略模式 tank fire 策略">
+      <created>1649948353952</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649948353952</updated>
+    </task>
+    <task id="LOCAL-00004" summary="抽象工程模式应用于 坦克、子弹、爆炸产品族">
+      <created>1650035489889</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650035489889</updated>
+    </task>
+    <task id="LOCAL-00005" summary="抽象出GameModel,将Model和View分离，同时，GameModel作为Facade,负责与Frame打交道，同时负责内部事务">
+      <created>1650205270559</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650205270559</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +227,34 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="gameMode" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -173,7 +262,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="策略模式" />
+    <MESSAGE value="策略模式 tank fire 策略" />
+    <MESSAGE value="抽象工程模式应用于 坦克、子弹、爆炸产品族" />
+    <MESSAGE value="抽象出GameModel,将Model和View分离，同时，GameModel作为Facade,负责与Frame打交道，同时负责内部事务" />
+    <option name="LAST_COMMIT_MESSAGE" value="抽象出GameModel,将Model和View分离，同时，GameModel作为Facade,负责与Frame打交道，同时负责内部事务" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tank$Main.ic" NAME="Main Coverage Results" MODIFIED="1649080918928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

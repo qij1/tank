@@ -5,13 +5,12 @@ import java.awt.*;
 /**
  * 子弹类
  */
-public class Bullet {
+public class Bullet extends GameObject {
     private static final int SPEED = PropertyMgr.getInt("bulletSpeed");
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
-    Rectangle rect = new Rectangle();
+    public Rectangle rect = new Rectangle();
 
-    private int x, y;
     private Dir dir;
     private GameModel gm;
     private Group group = Group.BAD;
@@ -26,11 +25,11 @@ public class Bullet {
         this.group = group;
     }
 
-    public Bullet(int x, int y, Dir dir, Group group, GameModel gm) {
+    public Bullet(int x, int y, Dir dir, Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
-        this.gm = gm;
+        this.gm = GameModel.getInstance();
         this.group = group;
         rect.x = this.x;
         rect.y = this.y;
@@ -38,9 +37,10 @@ public class Bullet {
         rect.height = HEIGHT;
     }
 
+    @Override
     public void paint(Graphics g) {
         if(!living) {
-            gm.bullets.remove(this);
+            gm.remove(this);
         }
         switch (dir) {
             case LEFT:
@@ -59,6 +59,16 @@ public class Bullet {
                 break;
         }
         move();
+    }
+
+    @Override
+    public int getWidth() {
+        return WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return HEIGHT;
     }
 
     private void move() {
@@ -90,19 +100,22 @@ public class Bullet {
 
     }
 
-    public void collideWith(Tank tank) {
-        if(this.group == tank.getGroup()) return;
+    public boolean collideWith(Tank tank) {
+        if(this.group == tank.getGroup()) return false;
 
         if(rect.intersects(tank.rect)) {
             tank.die();
             this.die();
             int ex = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
             int eY= tank.getY() + Tank.HEIGHT/2 - Explode.HEIGHT/2;
-            gm.explodes.add(new Explode(ex, eY , gm));
+            gm.add(new Explode(ex, eY));
+            return true;
         }
+
+        return false;
     }
 
-    private void die() {
+    public void die() {
         this.living  = false;
     }
 }
