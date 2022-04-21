@@ -1,10 +1,12 @@
 package com.qj.study.tank;
 
-import com.qj.study.tank.decorator.RectDecorator;
-import com.qj.study.tank.decorator.TailDecorator;
-import com.sun.jndi.toolkit.ctx.HeadTail;
+import com.qj.study.tank.observer.TankFireEvent;
+import com.qj.study.tank.observer.TankFireHandler;
+import com.qj.study.tank.observer.TankFireObserver;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -27,6 +29,8 @@ public class Tank extends GameObject {
     private boolean moving = true;
     private Group group = Group.BAD;
 
+    private List<TankFireObserver> fireObservers = new ArrayList();
+
     public Tank(int x, int y, Dir dir, Group group) {
         this.x = x;
         this.y = y;
@@ -37,6 +41,7 @@ public class Tank extends GameObject {
         rect.width = WIDTH;
         rect.height = HEIGHT;
         GameModel.getInstance().add(this);
+        fireObservers.add(new TankFireHandler());
     }
 
     public int getX() {
@@ -203,5 +208,12 @@ public class Tank extends GameObject {
 
     public void die() {
         this.living = false;
+    }
+
+    public void handleFireKey() {
+        TankFireEvent event = new TankFireEvent(this);
+        for(TankFireObserver o : fireObservers) {
+            o.actionOnFire(event);
+        }
     }
 }

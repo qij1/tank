@@ -51,6 +51,11 @@ public class TankFrame extends Frame {
         gm.paint(g);
     }
 
+    /**
+     * 观察者模式：事件源：TankFrame （被观察者）
+     *           监听器：MyKeyListener
+     *           事件： KeyEvent
+     */
     class MyKeyListener extends KeyAdapter {
         boolean bL = false;
         boolean bU = false;
@@ -98,7 +103,7 @@ public class TankFrame extends Frame {
                     bD = false;
                     break;
                 case KeyEvent.VK_CONTROL:
-                    gm.getMainTank().fire();
+                    gm.getMainTank().handleFireKey();
                     break;
                 default:
                     break;
