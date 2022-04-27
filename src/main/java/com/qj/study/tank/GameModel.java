@@ -3,10 +3,11 @@ package com.qj.study.tank;
 import com.qj.study.tank.cor.ColliderChain;
 
 import java.awt.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameModel {
+public class GameModel implements Serializable {
 
     Tank mytank;
 
@@ -104,5 +105,47 @@ public class GameModel {
 
     public Tank getMainTank() {
         return this.mytank;
+    }
+
+    public void save() {
+        ObjectOutputStream oos = null;
+        File f = new File("c:/tmp/tank.data");
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(f));
+            oos.writeObject(mytank);
+            oos.writeObject(objects);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void load() {
+        ObjectInputStream ois = null;
+        File f = new File("c:/tmp/tank.data");
+        try {
+            ois = new ObjectInputStream(new FileInputStream(f));
+            mytank = (Tank) ois.readObject();
+            objects = (List<GameObject>) ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if(ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

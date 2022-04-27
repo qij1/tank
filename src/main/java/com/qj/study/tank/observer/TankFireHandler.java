@@ -2,7 +2,9 @@ package com.qj.study.tank.observer;
 
 import com.qj.study.tank.Tank;
 
-public class TankFireHandler implements TankFireObserver {
+import java.io.Serializable;
+
+public class TankFireHandler implements TankFireObserver, Serializable {
 
     @Override
     public void actionOnFire(TankFireEvent e) {

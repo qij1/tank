@@ -2,6 +2,7 @@ package com.qj.study.tank.cor;
 
 import com.qj.study.tank.GameObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

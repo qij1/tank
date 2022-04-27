@@ -2,7 +2,9 @@ package com.qj.study.tank.observer;
 
 import com.qj.study.tank.Tank;
 
-public class TankFireEvent {
+import java.io.Serializable;
+
+public class TankFireEvent implements Serializable {
     Tank tank;
 
     public Tank getSource() {

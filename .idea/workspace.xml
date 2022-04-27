@@ -4,25 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9127b2db-0582-4c4a-9ded-0754c5b41686" name="Changes" comment="抽象出GameModel,将Model和View分离，同时，GameModel作为Facade,负责与Frame打交道，同时负责内部事务">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Wall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/BulletTankCollider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/BulletWallCollider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/Collider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/ColliderChain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/TankTankCollider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/TankWallCollider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/decorator/GODecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/decorator/RectDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/decorator/TailDecorator.java" afterDir="false" />
+    <list default="true" id="9127b2db-0582-4c4a-9ded-0754c5b41686" name="Changes" comment="tank开火应用观察者模式">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Explode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Explode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/TankFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/TankFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/Collider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/Collider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/ColliderChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/cor/ColliderChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/observer/TankFireEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/observer/TankFireEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/observer/TankFireHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/observer/TankFireHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/observer/TankFireObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qj/study/tank/observer/TankFireObserver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +71,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.qj.study.tank.observer" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\codes\tank\src\main\resources" />
       <recent name="D:\codes\tank\src" />
@@ -179,7 +173,18 @@
       <workItem from="1650280671655" duration="5459000" />
       <workItem from="1650333529819" duration="263000" />
       <workItem from="1650334035429" duration="12601000" />
-      <workItem from="1650370227309" duration="6578000" />
+      <workItem from="1650370227309" duration="11665000" />
+      <workItem from="1650465486400" duration="741000" />
+      <workItem from="1650510478727" duration="39000" />
+      <workItem from="1650510777193" duration="4724000" />
+      <workItem from="1650545441932" duration="1145000" />
+      <workItem from="1650589873151" duration="4020000" />
+      <workItem from="1650719275455" duration="567000" />
+      <workItem from="1650762464132" duration="1543000" />
+      <workItem from="1650811765037" duration="649000" />
+      <workItem from="1650897764132" duration="616000" />
+      <workItem from="1650975976102" duration="784000" />
+      <workItem from="1651023906097" duration="3165000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1649770218797</created>
@@ -216,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650205270559</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="调停者模式、责任链模式、装饰器模式">
+      <created>1650420522542</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1650420522542</updated>
+    </task>
+    <task id="LOCAL-00007" summary="tank开火应用观察者模式">
+      <created>1650522677961</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650522677962</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +286,9 @@
     <MESSAGE value="策略模式 tank fire 策略" />
     <MESSAGE value="抽象工程模式应用于 坦克、子弹、爆炸产品族" />
     <MESSAGE value="抽象出GameModel,将Model和View分离，同时，GameModel作为Facade,负责与Frame打交道，同时负责内部事务" />
-    <option name="LAST_COMMIT_MESSAGE" value="抽象出GameModel,将Model和View分离，同时，GameModel作为Facade,负责与Frame打交道，同时负责内部事务" />
+    <MESSAGE value="调停者模式、责任链模式、装饰器模式" />
+    <MESSAGE value="tank开火应用观察者模式" />
+    <option name="LAST_COMMIT_MESSAGE" value="tank开火应用观察者模式" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -276,11 +297,16 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qj/study/tank/TankFrame.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/tank$Main.ic" NAME="Main Coverage Results" MODIFIED="1649080918928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/tank$Main.ic" NAME="Main Coverage Results" MODIFIED="1651041662364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.qj.study.tank.*</FILTER>
     </SUITE>
   </component>
